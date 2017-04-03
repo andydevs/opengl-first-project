@@ -1,5 +1,6 @@
 // Headers being used
 #include "Window.h"
+#include "Shader.h"
 #include "Mesh.h"
 
 // Libraries being used
@@ -38,11 +39,14 @@ int main(int argc, char* argv[])
 		return 1;
 	}
 
+	// Load shader
+	Shader shader("./res/shader.glsl");
+
 	// Initialize mesh
 	Vertex vertices[] = {
-		Vertex(glm::vec3(-0.5, -0.5f, 0)),
-		Vertex(glm::vec3(0.0f, 0.5f, 0)),
-		Vertex(glm::vec3(0.5f, -0.5f, 0))
+		Vertex(glm::vec3(-0.5,  -0.5f,  0.0f)),
+		Vertex(glm::vec3( 0.0f,  0.5f,  0.0f)),
+		Vertex(glm::vec3( 0.5f, -0.5f,  0.0f))
 	};
 	Mesh mesh(vertices, sizeof(vertices) / sizeof(vertices[0]));
 
@@ -51,6 +55,9 @@ int main(int argc, char* argv[])
 		// Clear window
 		glClearColor(0.0f, 0.15f, 0.33f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
+
+		// Bind resources
+		shader.Bind();
 
 		// Draw mesh
 		mesh.Draw();

@@ -45,7 +45,7 @@ public:
 	/**
 	 * Destroys the window
 	 */
-	virtual ~Window();
+	~Window();
 
 	/**
 	 * Updates the window
