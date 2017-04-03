@@ -1,5 +1,6 @@
 // Headers being used
 #include "Window.h"
+#include "Texture.h"
 #include "Shader.h"
 #include "Mesh.h"
 
@@ -39,14 +40,15 @@ int main(int argc, char* argv[])
 		return 1;
 	}
 
-	// Load shader
+	// Load resources
 	Shader shader("./res/shader.glsl");
+	Texture texture("./res/bricks.jpg");
 
 	// Initialize mesh
 	Vertex vertices[] = {
-		Vertex(glm::vec3(-0.5,  -0.5f,  0.0f)),
-		Vertex(glm::vec3( 0.0f,  0.5f,  0.0f)),
-		Vertex(glm::vec3( 0.5f, -0.5f,  0.0f))
+		Vertex(glm::vec3(-0.5,  -0.5f,  0.0f), glm::vec2(0.0f,0.0f)),
+		Vertex(glm::vec3( 0.0f,  0.5f,  0.0f), glm::vec2(0.5f,1.0f)),
+		Vertex(glm::vec3( 0.5f, -0.5f,  0.0f), glm::vec2(1.0f,0.0f))
 	};
 	Mesh mesh(vertices, sizeof(vertices) / sizeof(vertices[0]));
 
@@ -58,6 +60,7 @@ int main(int argc, char* argv[])
 
 		// Bind resources
 		shader.Bind();
+		texture.Bind();
 
 		// Draw mesh
 		mesh.Draw();

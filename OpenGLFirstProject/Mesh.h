@@ -17,11 +17,17 @@ struct Vertex {
 	glm::vec3 pos;
 
 	/**
+	 * Texcoord of the vertex
+	 */
+	glm::vec2 tex;
+
+	/**
 	 * Creates a vertex with the given data
 	 *
-	 * @param p the position of the vertex
+	 * @param p position of the vertex
+	 * @param t texcoord of the vertex
 	 */
-	Vertex(glm::vec3 p);
+	Vertex(glm::vec3 p, glm::vec2 t);
 };
 
 /**

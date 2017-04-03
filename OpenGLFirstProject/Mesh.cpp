@@ -6,9 +6,10 @@
  *
  * @param p the position of the vertex
  */
-Vertex::Vertex(glm::vec3 p)
+Vertex::Vertex(glm::vec3 p, glm::vec2 t)
 {
 	pos = p;
+	tex = t;
 }
 
 /**
@@ -31,9 +32,11 @@ Mesh::Mesh(Vertex* vertices, unsigned numVertices)
 	glBindBuffer(GL_ARRAY_BUFFER, m_vertexDataBuffer);
 	glBufferData(GL_ARRAY_BUFFER, m_numVertices * sizeof(vertices[0]), vertices, GL_STATIC_DRAW);
 
-	// Get attribute array
+	// Set attribute array
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(vertices[0]), 0);
+	glEnableVertexAttribArray(1);
+	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(vertices[0]), (void*)12);
 
 	// Unbind array
 	glBindVertexArray(0);

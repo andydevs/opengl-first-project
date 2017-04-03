@@ -44,5 +44,12 @@ public:
 	 * Binds the shader
 	 */
 	void Bind();
+
+	/**
+	 * Returns the program
+	 *
+	 * @return the program
+	 */
+	GLuint GetProgram();
 };
 

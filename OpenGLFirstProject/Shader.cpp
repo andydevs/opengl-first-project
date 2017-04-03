@@ -88,6 +88,7 @@ Shader::Shader(const std::string& filename)
 
 	// Bind attributes
 	glBindAttribLocation(m_program, 0, "position");
+	glBindAttribLocation(m_program, 1, "texcoord");
 
 	// Link and validate program
 	glLinkProgram(m_program);
@@ -116,4 +117,14 @@ Shader::~Shader()
 void Shader::Bind()
 {
 	glUseProgram(m_program);
+}
+
+/**
+ * Returns the program
+ *
+ * @return the program
+ */
+GLuint Shader::GetProgram()
+{
+	return m_program;
 }
