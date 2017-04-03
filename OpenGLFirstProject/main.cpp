@@ -1,10 +1,12 @@
 // Headers being used
 #include "Window.h"
+#include "Mesh.h"
 
 // Libraries being used
 #include <iostream>
 #include <SDL2\SDL.h>
 #include <GL\glew.h>
+#include <GLM\glm.hpp>
 
 /**
  * The main function of the program
@@ -36,11 +38,22 @@ int main(int argc, char* argv[])
 		return 1;
 	}
 
+	// Initialize mesh
+	Vertex vertices[] = {
+		Vertex(glm::vec3(-0.5, -0.5f, 0)),
+		Vertex(glm::vec3(0.0f, 0.5f, 0)),
+		Vertex(glm::vec3(0.5f, -0.5f, 0))
+	};
+	Mesh mesh(vertices, sizeof(vertices) / sizeof(vertices[0]));
+
 	// Start main loop
 	while (!window.IsClosed()) {
 		// Clear window
 		glClearColor(0.0f, 0.15f, 0.33f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
+
+		// Draw mesh
+		mesh.Draw();
 
 		// Update window
 		window.Update();
